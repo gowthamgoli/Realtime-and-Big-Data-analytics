@@ -1,0 +1,13 @@
+lines = LOAD 'assignments/5/input/input.txt';
+StripHashtag= FOREACH lines GENERATE REPLACE($0,'#',' ');
+StripHiphen = FOREACH StripHashtag GENERATE REPLACE($0,'-',' ');
+StripCommas = FOREACH StripHiphen GENERATE REPLACE($0,',',' ');
+ConvtoLower = FOREACH StripCommas GENERATE LOWER((chararray)$0);
+StripColon = FOREACH ConvtoLower GENERATE REPLACE($0,':',' ');
+SplitWords = FOREACH StripColon GENERATE FLATTEN(TOKENIZE($0)) as words;
+searchKeys = LOAD 'assignments/5/keys.txt';
+joinedKeys = JOIN searchKeys BY $0 LEFT OUTER, SplitWords BY $0;
+frequencies = FOREACH joinedKeys GENERATE $0,($1 is null ? 0:1);
+GroupedWords = GROUP frequencies BY $0;
+Counts= FOREACH GroupedWords GENERATE group, SUM(frequencies.$1);
+STORE Counts INTO 'assignments/5/output';

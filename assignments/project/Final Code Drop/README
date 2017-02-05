@@ -1,0 +1,89 @@
+== README ==
+
+We have "4" Data Sources : 
+	1. OATH_ECB_Hearings_Case_Status.csv
+	2. Water_Quality_complaints.csv
+	3. Air_Quality.csv
+	4. 311_Service_Requests_from_2010_to_Present.csv
+
+
+The Operation Performed on the data sources are :
+	1. Ingest
+	2. ETL
+	3. Profiling
+	4. Export Tables to CSV
+	5. Analytics
+
+As result of operations using Hive, we will have "6" output CSV files which will act as input to Analytic.
+
+The sequence of operations is:
+
+// 1. Ingest
+
+1.1. Ingest/Ingest.sql
+
+// 2. ETL
+
+2.1. ETL/water_quality_complaints.sql
+2.2. ETL/air_quality.sql
+2.3. ETL/oath_case_status.sql
+2.4. ETL/311_service_requests.sql
+
+// 3. Profiling
+
+3.1. ETL/water_quality_complaints.sql
+3.2. ETL/air_quality.sql
+3.3. ETL/oath_case_status.sql
+3.4. ETL/311_service_requests.sql
+
+// 4. Export Tables to CSV
+
+4.1. export.txt // Each command from the text file has to be ran to export each table to CSV
+
+// 5. Analytics
+5.1 Analytic/water_quality_analytics
+	Run 'WaterQuality.jar' on 'WaterQuality.csv' and dump output to 'analytics_water_quality' using
+	'hadoop jar WaterQuality.jar WaterQuality input/WaterQuality.csv output'
+	'hadoop fs -get output/part-r-00000'
+	'Rename part-r-00000' to 'analytics_water_quality'
+	To parse 'analytics_water_quality' run 'python analytics_water_quality.py > analytics_water_quality.txt'
+
+5.2 Analytic/311_analytics
+	Run 'Data_311.jar' on 'rodents.csv' and dump output to 'analytics_311_rodents'
+	'hadoop jar WaterQuality.jar WaterQuality input/WaterQuality.csv output'
+	'hadoop fs -get output/part-r-00000'
+	'Rename part-r-00000' to 'analytics_water_quality'
+	To parse 'analytics_311_rodents' run 'python analytics_311_rodents.py > analytics_311_rodents.txt'
+
+	Run 'Data_311.jar' on 'food_poisoning.csv' and dump output to 'analytics_311_food_poisoning'
+	'hadoop jar Data_311.jar Data_311 input/food_poisoning.csv output'
+	'hadoop fs -get output/part-r-00000'
+	'Rename part-r-00000' to 'analytics_311_food_poisoning'
+	To parse 'analytics_311_food_poisoning' run 'python analytics_311_food_poisoning.py > analytics_311_food_poisoning.txt'
+
+	Run 'Data_311.jar' on 'indoor_air.csv' and dump output to 'analytics_311_indoor_air'
+	'hadoop jar Data_311.jar Data_311 input/indoor_air.csv output'
+	'hadoop fs -get output/part-r-00000'
+	'Rename part-r-00000' to 'analytics_311_indoor_air'
+	To parse 'analytics_311_indoor_air' run 'python analytics_311_indoor_air.py > analytics_311_indoor_air.txt'
+
+5.3 Analytic/oath_analytics
+	Run 'Oath.jar' on 'oath.csv' and dump output to 'analytics_oath'
+	'hadoop jar Oath.jar Oath input/oath.csv output'
+	'hadoop fs -get output/part-r-00000'
+	'Rename part-r-00000' to 'analytics_oath'
+	To parse 'analytics_oath' run 'python analytics_oath.py > analytics_oath.txt'
+
+5.4 Analytic/air_analytics
+	Run 'AirQuality.jar' on 'air.csv' and dump output to 'analytics_air'
+	'hadoop jar AirQuality.jar Oath input/air.csv output'
+	'Rename part-r-00000' to 'analytics_air'
+
+
+
+
+
+
+
+
+

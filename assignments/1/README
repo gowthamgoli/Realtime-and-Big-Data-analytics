@@ -1,0 +1,12 @@
+The folder 'Program' contains:
+
+	three programs    - MaxTemperature.java, MaxTemperatureMapper.java, MaxTemperatureReducer.java
+	jar file	      - MaxTemperature.java
+	Sample input file - data.txt
+	output log		  - output log (result of executing 'hadoop jar MaxTemp.jar MaxTemperature assignments/1/data.txt assignments/1/output')
+	results			  - part-r-00000
+
+The folder 'screenshots' contains:
+
+	output log_1.png, output log_2.png - Screenshot of executing 'hadoop jar MaxTemp.jar MaxTemperature assignments/1/data.txt assignments/1/output'
+	part-r-00000.png				   - Screenshot to verify the contents of file 'part-r-00000'

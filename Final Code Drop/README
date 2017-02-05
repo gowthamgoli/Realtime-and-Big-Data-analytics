@@ -1,0 +1,43 @@
+== README ==
+
+We have "4" Data Sources : 
+	1. OATH_ECB_Hearings_Case_Status.csv
+	2. Water_Quality_complaints.csv
+	3. Air_Quality.csv
+	4. 311_Service_Requests_from_2010_to_Present.csv
+
+
+The Operation Performed on the data sources are :
+	1. Ingest
+	2. ETL
+	3. Profiling
+	4. Export Tables to CSV
+
+As result of operations using Hive, we will have "6" output CSV files which will act as input to Analytic.
+
+The sequence of operations is:
+
+// 1. Ingest
+
+1.1. Ingest/Ingest.sql
+
+// 2. ETL
+
+2.1. ETL/water_quality_complaints.sql
+2.2. ETL/air_quality.sql
+2.3. ETL/oath_case_status.sql
+2.4. ETL/311_service_requests.sql
+
+// 3. Profiling
+
+3.1. ETL/water_quality_complaints.sql
+3.2. ETL/air_quality.sql
+3.3. ETL/oath_case_status.sql
+3.4. ETL/311_service_requests.sql
+
+// 4. Export Tables to CSV
+
+4.1. export.txt // Each command from the text file has to be ran to export each table to CSV
+
+
+

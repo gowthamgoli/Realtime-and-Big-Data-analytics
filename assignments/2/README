@@ -1,0 +1,14 @@
+The folder 'Program' contains:
+
+	three programs    - TweetCounter.java, TweetCounterMapper.java, TweetCounterReducer.java
+	jar file	      - TweetCounter.java
+	Sample input file - input.txt
+	output log		  - output log 
+						(result of executing 'hadoop jar TweetCounter.jar TweetCounter assignments/2/input.txt assignments/2/output')
+	results			  - part-r-00000
+
+The folder 'screenshots' contains:
+
+	output log_1.png, output log_2.png - Screenshot of executing 
+										'hadoop jar TweetCounter.jar TweetCounter assignments/2/input.txt assignments/2/output'
+	part-r-00000.png				   - Screenshot to verify the contents of file 'part-r-00000'

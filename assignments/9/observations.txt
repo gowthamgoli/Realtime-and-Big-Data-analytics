@@ -1,0 +1,93 @@
+hive> select * from w2;    -- Is this what you expected to see? Enter your answer on NYU Classes
+w2.nines will be stored as NULL because the size of 'int' is only 4 bytes where as 99999999999 needs more than 4 bytes to accommodate it.
+Hence the datatype 'bigint' needs to be used to store w2.nines
+
+----------------------------------------------------------------------------------------------------------
+
+select distinct year from w10;
+Query: select distinct year from w10
++------+
+| year |
++------+
+| 1950 |
+| 1949 |
++------+
+Fetched 2 row(s) in 1.29s
+
+----------------------------------------------------------------------------------------------------------
+
+[quickstart.cloudera:21000] > select distinct year from w1;
+Query: select distinct year from w1
++------+
+| year |
++------+
+| 1950 |
+| 1949 |
++------+
+Fetched 2 row(s) in 6.20s
+
+----------------------------------------------------------------------------------------------------------
+
+[quickstart.cloudera:21000] > select distinct year from w1;
+Query: select distinct year from w1
++------+
+| year |
++------+
+| 1950 |
+| 1949 |
++------+
+Fetched 2 row(s) in 2.10s
+
+----------------------------------------------------------------------------------------------------------
+
+0: jdbc:hive2://quickstart:10000/default> select distinct year from w1;
+INFO  : Number of reduce tasks not specified. Estimated from input data size: 1
+INFO  : In order to change the average load for a reducer (in bytes):
+INFO  :   set hive.exec.reducers.bytes.per.reducer=<number>
+INFO  : In order to limit the maximum number of reducers:
+INFO  :   set hive.exec.reducers.max=<number>
+INFO  : In order to set a constant number of reducers:
+INFO  :   set mapreduce.job.reduces=<number>
+INFO  : Starting Job = job_1459802568279_0003, Tracking URL = http://quickstart.cloudera:8088/proxy/application_1459802568279_0003/
+INFO  : Kill Command = /usr/lib/hadoop/bin/hadoop job  -kill job_1459802568279_0003
+INFO  : Hadoop job information for Stage-1: number of mappers: 1; number of reducers: 1
+INFO  : 2016-04-04 15:36:40,252 Stage-1 map = 0%,  reduce = 0%
+INFO  : 2016-04-04 15:36:49,135 Stage-1 map = 100%,  reduce = 0%, Cumulative CPU 1.05 sec
+INFO  : 2016-04-04 15:37:01,179 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 2.54 sec
+INFO  : MapReduce Total cumulative CPU time: 2 seconds 540 msec
+INFO  : Ended Job = job_1459802568279_0003
++-------+--+
+| year  |
++-------+--+
+| 1949  |
+| 1950  |
++-------+--+
+2 rows selected (33.717 seconds)
+
+----------------------------------------------------------------------------------------------------------
+
+0: jdbc:hive2://quickstart:10000/default> select distinct year from w1;
+INFO  : Number of reduce tasks not specified. Estimated from input data size: 1
+INFO  : In order to change the average load for a reducer (in bytes):
+INFO  :   set hive.exec.reducers.bytes.per.reducer=<number>
+INFO  : In order to limit the maximum number of reducers:
+INFO  :   set hive.exec.reducers.max=<number>
+INFO  : In order to set a constant number of reducers:
+INFO  :   set mapreduce.job.reduces=<number>
+INFO  : Starting Job = job_1459802568279_0004, Tracking URL = http://quickstart.cloudera:8088/proxy/application_1459802568279_0004/
+INFO  : Kill Command = /usr/lib/hadoop/bin/hadoop job  -kill job_1459802568279_0004
+INFO  : Hadoop job information for Stage-1: number of mappers: 1; number of reducers: 1
+INFO  : 2016-04-04 15:37:58,789 Stage-1 map = 0%,  reduce = 0%
+INFO  : 2016-04-04 15:38:07,615 Stage-1 map = 100%,  reduce = 0%, Cumulative CPU 1.06 sec
+INFO  : 2016-04-04 15:38:18,730 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 2.47 sec
+INFO  : MapReduce Total cumulative CPU time: 2 seconds 470 msec
+INFO  : Ended Job = job_1459802568279_0004
++-------+--+
+| year  |
++-------+--+
+| 1949  |
+| 1950  |
++-------+--+
+2 rows selected (32.017 seconds)
+
+

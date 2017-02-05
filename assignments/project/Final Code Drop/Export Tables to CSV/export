@@ -1,0 +1,24 @@
+// 1. Export Food Poisoning Complaints Data
+
+hive -e 'select * from 311_data_food_poisoning' | sed 's/[\t]/,/g'  > /home/cloudera/Desktop/datasets/final/311_data_food_poisoning.csv
+
+// 2. Export Rodent Complaints Data
+
+hive -e 'select * from 311_data_rodent' | sed 's/[\t]/,/g'  > /home/cloudera/Desktop/datasets/final/311_data_rodent.csv
+
+// 3. Export Indoor Air Quality Complaints Data
+
+hive -e 'select * from 311_data_indoor_air' | sed 's/[\t]/,/g'  > /home/cloudera/Desktop/datasets/final/311_data_indoor_air.csv
+
+// 4. Export Exterior Air Quality Data
+
+hive -e 'select * from air_quality_filtered' | sed 's/[\t]/,/g'  > /home/cloudera/Desktop/datasets/final/air_quality.csv
+
+// 5. Export Water Quality Complaints Data 
+
+hive -e 'select * from water_quality_complaints_filtered' | sed 's/[\t]/,/g'  > /home/cloudera/Desktop/datasets/final/water_quality_complaints.csv
+
+// 6. Export Garbage Complaints Data 
+
+hive -e 'select * from oath_case_status_filtered_clean' | sed 's/[\t]/,/g'  > /home/cloudera/Desktop/datasets/final/garbage_complaints.csv
+
